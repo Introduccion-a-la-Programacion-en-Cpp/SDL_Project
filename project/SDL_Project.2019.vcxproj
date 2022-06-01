@@ -72,8 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)..\libs\SDL2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)..\libs\SDL2\lib\$(PlatformTarget);$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)..\libs\SDL2\include;$(ProjectDir)..\libs\SDL2_image\include;$(ProjectDir)..\libs\SDL2_ttf\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)..\libs\SDL2\lib\$(PlatformTarget);$(ProjectDir)..\libs\SDL2_image\lib\$(PlatformTarget);$(ProjectDir)..\libs\SDL2_ttf\lib\$(PlatformTarget);$(LibraryPath)</LibraryPath>
     <CustomBuildBeforeTargets>
     </CustomBuildBeforeTargets>
     <CustomBuildAfterTargets>
@@ -84,8 +84,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)..\libs\SDL2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)..\libs\SDL2\lib\$(PlatformTarget);$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)..\libs\SDL2\include;$(ProjectDir)..\libs\SDL2_image\include;$(ProjectDir)..\libs\SDL2_ttf\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)..\libs\SDL2\lib\$(PlatformTarget);$(ProjectDir)..\libs\SDL2_image\lib\$(PlatformTarget);$(ProjectDir)..\libs\SDL2_ttf\lib\$(PlatformTarget);$(LibraryPath)</LibraryPath>
     <CustomBuildBeforeTargets>
     </CustomBuildBeforeTargets>
     <CustomBuildAfterTargets>
@@ -104,7 +104,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CustomBuildStep>
       <RootFolder>
@@ -113,7 +113,10 @@
       </Command>
     </CustomBuildStep>
     <PostBuildEvent>
-      <Command>xcopy $(ProjectDir)..\libs\SDL2\lib\$(PlatformTarget)\*.dll $(OutDir)</Command>
+      <Command>xcopy /y $(ProjectDir)..\libs\SDL2\lib\$(PlatformTarget)\*.dll $(OutDir)
+xcopy /y $(ProjectDir)..\libs\SDL2_image\lib\$(PlatformTarget)\*.dll $(OutDir)
+xcopy /y $(ProjectDir)..\libs\SDL2_ttf\lib\$(PlatformTarget)\*.dll $(OutDir)
+xcopy /y  /E /C /I $(ProjectDir)..\assets $(OutDir)\assets</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -142,7 +145,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CustomBuildStep>
       <RootFolder>
@@ -151,7 +154,10 @@
       </Command>
     </CustomBuildStep>
     <PostBuildEvent>
-      <Command>xcopy $(ProjectDir)..\libs\SDL2\lib\$(PlatformTarget)\*.dll $(OutDir)</Command>
+      <Command>xcopy /y $(ProjectDir)..\libs\SDL2\lib\$(PlatformTarget)\*.dll $(OutDir)
+xcopy /y $(ProjectDir)..\libs\SDL2_image\lib\$(PlatformTarget)\*.dll $(OutDir)
+xcopy /y $(ProjectDir)..\libs\SDL2_ttf\lib\$(PlatformTarget)\*.dll $(OutDir)
+xcopy /y  /E /C /I $(ProjectDir)..\assets $(OutDir)\assets</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
