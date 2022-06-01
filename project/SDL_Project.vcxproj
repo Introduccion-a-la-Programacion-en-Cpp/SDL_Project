@@ -113,7 +113,7 @@
       </Command>
     </CustomBuildStep>
     <PostBuildEvent>
-      <Command>xcopy $(ProjectDir)..\libs\SDL2\lib\$(PlatformTarget)\*.dll $(OutDir)</Command>
+      <Command>xcopy /y $(ProjectDir)..\libs\SDL2\lib\$(PlatformTarget)\*.dll $(OutDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -151,7 +151,7 @@
       </Command>
     </CustomBuildStep>
     <PostBuildEvent>
-      <Command>xcopy $(ProjectDir)..\libs\SDL2\lib\$(PlatformTarget)\*.dll $(OutDir)</Command>
+      <Command>xcopy /y $(ProjectDir)..\libs\SDL2\lib\$(PlatformTarget)\*.dll $(OutDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
