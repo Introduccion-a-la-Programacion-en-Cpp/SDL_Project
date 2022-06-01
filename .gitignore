@@ -64,7 +64,7 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
-![Ll]ibs/SDL2/lib/
+![Ll]ibs/SDL2/lib/**
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
