@@ -39,7 +39,8 @@
 # User-specific files
 *.rsuser
 *.suo
-*.user
+# I'll let .user file to be versioned in order to share the way of run the app while debugging.
+# *.user
 *.userosscache
 *.sln.docstates
 
@@ -67,6 +68,7 @@ bld/
 ![Ll]ibs/SDL2/lib/**
 ![Ll]ibs/SDL2_image/lib/**
 ![Ll]ibs/SDL2_ttf/lib/**
+![Ll]ibs/SDL2_mixer/lib/**
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
