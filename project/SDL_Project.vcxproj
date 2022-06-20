@@ -113,11 +113,12 @@
       </Command>
     </CustomBuildStep>
     <PostBuildEvent>
-      <Command>xcopy /y $(ProjectDir)..\libs\SDL2\lib\$(PlatformTarget)\*.dll $(OutDir)
-xcopy /y $(ProjectDir)..\libs\SDL2_image\lib\$(PlatformTarget)\*.dll $(OutDir)
-xcopy /y $(ProjectDir)..\libs\SDL2_ttf\lib\$(PlatformTarget)\*.dll $(OutDir)
-xcopy /y $(ProjectDir)..\libs\SDL2_mixer\lib\$(PlatformTarget)\*.dll $(OutDir)
-xcopy /y  /E /C /I $(ProjectDir)..\assets $(OutDir)\assets</Command>
+      <Command>xcopy "$(ProjectDir)..\libs\SDL2_image\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+
+xcopy "$(ProjectDir)..\libs\SDL2_ttf\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+xcopy "$(ProjectDir)..\libs\SDL2\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+
+xcopy "$(ProjectDir)..\assets" "$(OutDir)\assets" /Y  /E /C /I</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -135,6 +136,14 @@ xcopy /y  /E /C /I $(ProjectDir)..\assets $(OutDir)\assets</Command>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(ProjectDir)..\libs\SDL2_image\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+
+xcopy "$(ProjectDir)..\libs\SDL2_ttf\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+xcopy "$(ProjectDir)..\libs\SDL2\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+
+xcopy "$(ProjectDir)..\assets" "$(OutDir)\assets" /Y  /E /C /I</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -155,11 +164,12 @@ xcopy /y  /E /C /I $(ProjectDir)..\assets $(OutDir)\assets</Command>
       </Command>
     </CustomBuildStep>
     <PostBuildEvent>
-      <Command>xcopy /y $(ProjectDir)..\libs\SDL2\lib\$(PlatformTarget)\*.dll $(OutDir)
-xcopy /y $(ProjectDir)..\libs\SDL2_image\lib\$(PlatformTarget)\*.dll $(OutDir)
-xcopy /y $(ProjectDir)..\libs\SDL2_ttf\lib\$(PlatformTarget)\*.dll $(OutDir)
-xcopy /y $(ProjectDir)..\libs\SDL2_mixer\lib\$(PlatformTarget)\*.dll $(OutDir)
-xcopy /y  /E /C /I $(ProjectDir)..\assets $(OutDir)\assets</Command>
+      <Command>xcopy "$(ProjectDir)..\libs\SDL2_image\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+
+xcopy "$(ProjectDir)..\libs\SDL2_ttf\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+xcopy "$(ProjectDir)..\libs\SDL2\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+
+xcopy "$(ProjectDir)..\assets" "$(OutDir)\assets" /Y  /E /C /I</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -177,6 +187,14 @@ xcopy /y  /E /C /I $(ProjectDir)..\assets $(OutDir)\assets</Command>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(ProjectDir)..\libs\SDL2_image\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+
+xcopy "$(ProjectDir)..\libs\SDL2_ttf\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+xcopy "$(ProjectDir)..\libs\SDL2\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+
+xcopy "$(ProjectDir)..\assets" "$(OutDir)\assets" /Y  /E /C /I</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="../src/SDL_Project.cpp" />
