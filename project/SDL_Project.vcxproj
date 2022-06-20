@@ -115,8 +115,13 @@
     <PostBuildEvent>
       <Command>xcopy "$(ProjectDir)..\libs\SDL2_image\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
 
+
 xcopy "$(ProjectDir)..\libs\SDL2_ttf\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+
 xcopy "$(ProjectDir)..\libs\SDL2\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+
+xcopy "$(ProjectDir)..\libs\SDL2_mixer\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+
 
 xcopy "$(ProjectDir)..\assets" "$(OutDir)\assets" /Y  /E /C /I</Command>
     </PostBuildEvent>
@@ -139,8 +144,13 @@ xcopy "$(ProjectDir)..\assets" "$(OutDir)\assets" /Y  /E /C /I</Command>
     <PostBuildEvent>
       <Command>xcopy "$(ProjectDir)..\libs\SDL2_image\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
 
+
 xcopy "$(ProjectDir)..\libs\SDL2_ttf\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+
 xcopy "$(ProjectDir)..\libs\SDL2\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+
+xcopy "$(ProjectDir)..\libs\SDL2_mixer\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+
 
 xcopy "$(ProjectDir)..\assets" "$(OutDir)\assets" /Y  /E /C /I</Command>
     </PostBuildEvent>
@@ -166,8 +176,13 @@ xcopy "$(ProjectDir)..\assets" "$(OutDir)\assets" /Y  /E /C /I</Command>
     <PostBuildEvent>
       <Command>xcopy "$(ProjectDir)..\libs\SDL2_image\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
 
+
 xcopy "$(ProjectDir)..\libs\SDL2_ttf\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+
 xcopy "$(ProjectDir)..\libs\SDL2\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+
+xcopy "$(ProjectDir)..\libs\SDL2_mixer\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+
 
 xcopy "$(ProjectDir)..\assets" "$(OutDir)\assets" /Y  /E /C /I</Command>
     </PostBuildEvent>
@@ -190,8 +205,13 @@ xcopy "$(ProjectDir)..\assets" "$(OutDir)\assets" /Y  /E /C /I</Command>
     <PostBuildEvent>
       <Command>xcopy "$(ProjectDir)..\libs\SDL2_image\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
 
+
 xcopy "$(ProjectDir)..\libs\SDL2_ttf\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+
 xcopy "$(ProjectDir)..\libs\SDL2\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+
+xcopy "$(ProjectDir)..\libs\SDL2_mixer\lib\$(PlatformTarget)\*.dll" "$(ProjectDir)$(PlatformTarget)\$(Configuration)" /Y
+
 
 xcopy "$(ProjectDir)..\assets" "$(OutDir)\assets" /Y  /E /C /I</Command>
     </PostBuildEvent>
