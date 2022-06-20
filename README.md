@@ -20,3 +20,7 @@ Luego al descomprimir abrir el archivo "SDL_Project.sln" dentro de la carpeta "p
  ### Para Crear un proyecto de Consola.
 
  IR al enlace [Consola](doc/CONSOLE.md#section-1)
+
+### Creditos
+
+"Music by Bensound.com"
