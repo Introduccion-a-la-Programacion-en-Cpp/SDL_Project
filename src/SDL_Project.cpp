@@ -4,42 +4,20 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <stack>
 #include "SDL.h"
 #include "SDL_image.h"
 #include "SDL_TTF.h"
 #include "SDL_mixer.h"
+#include "InputModule.h"
+#include "GSLogoState.h"
 
 using namespace std;
 
 ///////// Definicion de estructuras /////////////
-typedef struct InputState {
-    bool up = false;
-    bool down = false;
-    bool right = false;
-    bool left = false;
-    bool fire = false;
-};
-
-typedef struct Sprite {
-    SDL_Texture* texture;
-    SDL_Rect dest;
-    bool isVisible = true;
-};
-
-typedef struct Text {
-    TTF_Font* font;
-    SDL_Color color;
-    SDL_Surface* surface;
-    SDL_Texture* texture;
-    SDL_Rect dest;
-    bool isVisible = true;
-};
-
-typedef struct Bgm {
-    Mix_Music* music;
-};
-
+#include "StructsDef.h"
 ///////// Definicion de estructuras /////////////
+
 
 ///////// Variables y Constantes Globales /////////////
 const int WIDTH = 640;
@@ -47,10 +25,14 @@ const int HEIGHT = 480;
 SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
 SDL_bool isGameRunning = SDL_TRUE;
+float time_multiplier = 1.0f;
 InputState gameInputState;
-vector<Sprite> spritesAssets;
-vector<Text> textAssets;
-vector<Bgm> musicAssets;
+SpriteAssets spritesAssets;
+TextAssets textAssets;
+BgmAssets musicAssets;
+GameStages gameStages;
+
+ResourceManager resourceManager;
 
 ///////// Variables y Constantes Globales /////////////
 
@@ -69,17 +51,31 @@ void initEngine()
         // handle error
     }
 
-    window = SDL_CreateWindow("SDL2 Test", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
+    window = SDL_CreateWindow("SDL2 Template Project", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+
+    // Initializing Resource Manager
+    resourceManager.spritesAssets = &spritesAssets;
+    resourceManager.textAssets = &textAssets;
+    resourceManager.musicAssets = &musicAssets;
+    resourceManager.gameStages = &gameStages;
+    resourceManager.inputState = &gameInputState;
+
+    // Starting Game stage
+    GameStage logoGameStage;
+    logoGameStage.game_stageID = GS_LOGO;
+    logoGameStage.stage_name = "Logo";
+
+    gameStages.push(logoGameStage);
 }
 
 void destroyEngine() {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
-    SDL_Quit();
     TTF_Quit();
     Mix_CloseAudio();
     Mix_Quit();
+    SDL_Quit();
 }
 
 ///////// Funciones de inicializacion y destruccion /////////////
@@ -129,7 +125,6 @@ void loadAssets() {
 
     textAssets.push_back(mainText);
 
-
     // Cargo Sonidos y BGM
     string soundFilePath = "assets/bgm/littleidea.mp3";
     Mix_Music* music;
@@ -167,8 +162,10 @@ void inputUpdate() {
         
         switch (event.type) {
         case SDL_KEYDOWN:
+            onKeyDown(event.key.keysym.sym, gameInputState);
             break;
         case SDL_KEYUP:
+            onKeyUp(event.key.keysym.sym, gameInputState);
             break;
         case SDL_MOUSEBUTTONDOWN:
             break;
@@ -196,6 +193,22 @@ void updateGame(float deltaTime) {
         timer = 1.0f * 1000;
         textAssets[0].isVisible = !textAssets[0].isVisible;
     }
+
+    // Small state machine using stack collection
+    switch (gameStages.top().game_stageID)
+    {
+    case GS_LOGO:
+        GSLogoStateUpdate(deltaTime, resourceManager);
+        break;
+    case GS_MAIN_MENU:
+        break;
+    case GS_GAMEPLAY:
+        break;
+    case GS_INVALID:
+    default:
+        break;
+    }
+
 }
 
 void render()
@@ -235,19 +248,19 @@ int main(int argc, char* argv[])
 
     Mix_PlayMusic(musicAssets[0].music, -1);
 
-    int currentTime = SDL_GetTicks64();
+    Uint64 currentTime = SDL_GetTicks64();
 
     while (isGameRunning) {
 
-        int previousTime = currentTime;
+        Uint64 previousTime = currentTime;
 
         currentTime = SDL_GetTicks64();
 
-        float deltaTime = currentTime - previousTime;
+        Uint64 deltaTime = currentTime - previousTime;
 
         inputUpdate();
 
-        updateGame(deltaTime);
+        updateGame(deltaTime * time_multiplier);
 
         render();
     }
